@@ -1,0 +1,69 @@
+---
+title: "HW5"
+author: "Sage Davis"
+date: "11/13/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+library(janitor)
+library(here)
+library(hexbin)
+```
+
+```{r}
+
+ces <- read_csv(here("data", "ces3demographics.csv")) %>% 
+  clean_names()
+```
+
+
+```{r}
+# B. Partner 2
+
+ggplot(data = ces, aes(x = white_percent, y = ces_3_0_score)) +
+  geom_point()
+
+```
+
+```{r}
+# C. Partner 1
+
+ggplot(data = ces, aes(x = white_percent, y = ces_3_0_score)) +
+  geom_hex() +
+  labs(x = "Percent White",
+       y = "CES 3.0 Score",
+       title = " CalEnviroScreen 3.0 Score vs. White Population Percentage")
+```
+
+```{r}
+# D. Partner 2
+ggplot(data = ces, aes(x = white_percent, y = ces_3_0_score)) +
+  geom_hex() +
+  scale_fill_gradient(low = "red", high = "purple") +
+  labs(x = "Percent White",
+       y = "CES 3.0 Score",
+       title = " CalEnviroScreen 3.0 Score vs. White Population Percentage")
+
+
+```
+
+```{r echo = FALSE, warning = FASLE, message = FALSE}
+# E. P1
+
+ggplot(data = ces, aes(x = white_percent, y = ces_3_0_score)) +
+  geom_hex() +
+  scale_fill_gradient(low = "red", high = "purple") +
+  labs(x = "Percent White",
+       y = "CES 3.0 Score",
+       caption = "Figure 1 CalEnviroScreen 3.0 Score vs. White Population Percentage")
+
+```
+
+```{r}
+
+```
+
